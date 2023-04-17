@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,9 @@ public class Runner {
   }
 
   public static void main(String[] args) throws IOException {
+    //ToDO обновить вывод и поиск по ключу, теория по енам
     Distributor worker = new Distributor();
+    Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));
 
     Command command = readCommand();
     while (command != Command.EXIT) {
@@ -39,6 +42,7 @@ public class Runner {
       }
       command = readCommand();
     }
+
     System.out.println("Tschüss!");
   }
 
