@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Dictionary;
 import java.util.List;
 
 public class Runner {
@@ -14,49 +15,29 @@ public class Runner {
     EXIT,
   }
 
-
-  private static List<Command> listOfCommand() {
-    List<Command> menu = new ArrayList<>();
-
-    menu.add(Command.VOCABULARY);
-    menu.add(Command.TRAINING);
-    menu.add(Command.REPORT);
-    menu.add(Command.EXIT);
-
-    return menu;
-  }
-
   public static void main(String[] args) throws IOException {
     //ToDO обновить вывод и поиск по ключу, теория по енам
     Controller worker = new Controller();
     Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));
 
+    MyDictionary currentWordList = new MyDictionary(readFile());
+
     Command command = readCommand();
     while (command != Command.EXIT) {
       switch (command) {
-        case VOCABULARY -> worker.openVocabulary();
-        case TRAINING -> worker.openTrain();
-        case REPORT -> worker.getResult();
+        case VOCABULARY -> worker.openVocabulary(currentWordList);
+        case TRAINING -> worker.openTrain(currentWordList);
+        case REPORT -> worker.getResult(currentWordList);
       }
       command = readCommand();
     }
-    worker.exitProgram();
+    writeToFile(currentWordList);
     System.out.println("Tschüss!");
-  }
-
-  public static void printMenu() {
-    System.out.println();
-    System.out.println("List of command:");
-    List<Command> forPrint = listOfCommand();
-    for (Command command : forPrint) {
-      System.out.println(command);
-    }
   }
 
   public static Command readCommand() throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    printMenu();
     System.out.println();
     System.out.print("Enter the command: ");
     String command = br.readLine().toUpperCase();
@@ -71,8 +52,15 @@ public class Runner {
         command = br.readLine().toUpperCase();
       }
     }
-
     System.out.println();
     return result;
+  }
+
+  private static List<Word> readFile(){
+    List<Word> temporary = new ArrayList<>();
+    return temporary;
+  }
+
+  private static void writeToFile(MyDictionary temporary){
   }
 }
