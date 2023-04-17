@@ -3,9 +3,9 @@ import java.util.List;
 
 public class Dictionary {
 
-  public static List<Wort> getList(){
-    List<Wort> sortVocable = new ArrayList<>();
-    System.out.println("HERE SHOULD BE LIST OF WORT");
+  public static List<Word> getList(){
+    List<Word> sortVocable = new ArrayList<>();
+    System.out.println("HERE SHOULD BE LIST OF WORD");
     return sortVocable;
   }
 

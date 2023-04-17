@@ -1,6 +1,6 @@
-public class Distributor {
+public class Controller {
 
-  public void openVocabular(){
+  public void openVocabulary(){
     System.out.println("Here will be Vocabulary");
   }
 
@@ -10,6 +10,10 @@ public class Distributor {
 
   public void getResult(){
     System.out.println("Here will be Report");
+  }
+
+  public void exitProgram(){
+    System.out.println("Here we will save all changes to the List file");
   }
 
 }
