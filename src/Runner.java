@@ -15,25 +15,14 @@ public class Runner {
     EXIT,
   }
 
-  private static List<Map<Integer, Command>> listOfCommand() {
-    List<Map<Integer, Command>> menu = new ArrayList<>();
 
-    Map<Integer, Command> firstCommand = new HashMap<>();
-    firstCommand.put(1, Command.VOCABULARY);
+  private static List<Command> listOfCommand() {
+    List<Command> menu = new ArrayList<>();
 
-    Map<Integer, Command> secondCommand = new HashMap<>();
-    secondCommand.put(2, Command.TRAINING);
-
-    Map<Integer, Command> thirdCommand = new HashMap<>();
-    thirdCommand.put(3, Command.REPORT);
-
-    Map<Integer, Command> exitCommand = new HashMap<>();
-    exitCommand.put(0, Command.EXIT);
-
-    menu.add(firstCommand);
-    menu.add(secondCommand);
-    menu.add(thirdCommand);
-    menu.add(exitCommand);
+    menu.add(Command.VOCABULARY);
+    menu.add(Command.TRAINING);
+    menu.add(Command.REPORT);
+    menu.add(Command.EXIT);
 
     return menu;
   }
@@ -56,8 +45,8 @@ public class Runner {
   public static void printMenu() {
     System.out.println();
     System.out.println("List of command:");
-    List<Map<Integer, Command>> forPrint = listOfCommand();
-    for (Map<Integer, Command> command : forPrint) {
+    List<Command> forPrint = listOfCommand();
+    for (Command command : forPrint) {
       System.out.println(command);
     }
   }
