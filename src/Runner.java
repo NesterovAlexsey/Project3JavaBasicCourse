@@ -28,7 +28,7 @@ public class Runner {
     thirdCommand.put(3,Command.REPORT);
 
     Map<Integer, Command> exitCommand = new HashMap<>();
-    exitCommand.put(3,Command.EXIT);
+    exitCommand.put(0,Command.EXIT);
 
     menu.add(firstCommand);
     menu.add(secondCommand);
@@ -38,9 +38,10 @@ public class Runner {
     return menu;
   }
 
-//  public static void main(String[] args) throws IOException {
-//    Register cashRegister = new Register();
-//
+  public static void main(String[] args) throws IOException {
+    Distributor worker = new Distributor();
+    printMenu();
+
 //    Command command = readCommand();
 //    while (command != Command.EXIT) { // основной рабочий цикл программы, обрабатывающий команды
 //      switch (command) {
@@ -54,15 +55,16 @@ public class Runner {
 //      command = readCommand(); // команда EXIT просто завершит цикл
 //    }
 //    System.out.println("До свидания!");
-//  }
+  }
 
-//  public static void printMenu() {
-//    System.out.println(); // пустая строка для красоты
-//    System.out.println("Список команд:");
-//    for (Command command : commands.keySet()) {
-//      System.out.println("- " + command + ": " + commands.get(command));
-//    }
-//  }
+  public static void printMenu() {
+    System.out.println();
+    System.out.println("List of command:");
+    List<Map<Integer, Command>> forPrint = listOfCommand();
+    for (Map<Integer, Command> command : forPrint) {
+      System.out.println(command);
+    }
+  }
 
 //  public static Command readCommand() throws IOException {
 //    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
