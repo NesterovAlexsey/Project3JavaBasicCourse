@@ -1,3 +1,5 @@
+import java.util.Comparator;
+import java.util.Dictionary;
 import java.util.List;
 
 public class MyDictionary {
@@ -16,16 +18,9 @@ public class MyDictionary {
     MyDictionary.wordList = wordList;
   }
 
-  public static void printList() {
-    List<Word> printing = MyDictionary.getWordList();
-    for (Word x : printing) {
-      System.out.println(x);
-    }
-  }
-
-  public static void printSortList() {
-    //todo сортировку добавить
-    List<Word> printing = MyDictionary.getWordList();
+  public static void printSortEnglishList() {
+    List<Word> printing = getWordList();
+    printing.sort(Comparator.comparing(Word::getEnglishWord));
     for (Word x : printing) {
       System.out.println(x);
     }

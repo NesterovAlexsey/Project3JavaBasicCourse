@@ -1,9 +1,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Vocabulary {
+
   final static int VIEW = 1;
   final static int ADD = 2;
   final static int DELETE = 3;
@@ -16,12 +19,11 @@ public class Vocabulary {
     printVocabularyMenu();
     int command = readVocabularyCommand(currentDictionary);
     while (command != MENU) {
-      switch (command){
-        case VIEW -> MyDictionary.printList();
+      switch (command) {
+        case VIEW -> MyDictionary.printSortEnglishList();
       }
       command = readVocabularyCommand(currentDictionary);
     }
-//    currentDictionary.printList();
   }
 
   private static void printVocabularyMenu() {
