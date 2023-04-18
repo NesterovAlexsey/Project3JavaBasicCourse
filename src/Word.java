@@ -1,7 +1,7 @@
 public class Word {
 
   private String deutschWord;
-  //todo добавить артикель
+
   private String englishWord;
 
   private int numberOfMentions = 0;

@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.List;
-
 public class Controller {
 
   public void openVocabulary(MyDictionary currentDictionary) {
