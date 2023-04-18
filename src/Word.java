@@ -1,4 +1,4 @@
-public class Word {
+public class Word implements Comparable<Word> {
 
   private String deutschWord;
 
@@ -37,6 +37,11 @@ public class Word {
 
   @Override
   public String toString(){
-    return getDeutschWord() + " : " + getEnglishWord();
+    return getEnglishWord() + " : " + getDeutschWord();
+  }
+
+  @Override
+  public int compareTo(Word other) {
+    return englishWord.compareTo(other.englishWord);
   }
 }
