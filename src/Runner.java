@@ -36,26 +36,41 @@ public class Runner {
   }
 
   public static Command readCommand() throws IOException {
-    //Todo обновить, чтобы работал по нажатию на цифру также
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    System.out.println();
-    System.out.print("Enter the command: ");
+    System.out.print("\nEnter the command: ");
     String command = br.readLine().toUpperCase();
 
     Command result = null;
     while (result == null) {
       try {
-        result = Command.valueOf(command);
-      } catch (IllegalArgumentException e) {
-        System.out.println("Incorrect: " + command);
-        System.out.print("Please, enter correct command: ");
-        command = br.readLine().toUpperCase();
+        Integer commandInt = Integer.parseInt(command);
+        result = readIntNumber(commandInt);
+      } catch (NumberFormatException e) {
+        try {
+          result = Command.valueOf(command);
+        } catch (IllegalArgumentException c) {
+
+          System.out.println("Incorrect: " + command);
+          System.out.print("Please, enter correct command: ");
+          command = br.readLine().toUpperCase();
+        }
       }
     }
     System.out.println();
     return result;
   }
+
+  private static Command readIntNumber(Integer commandInt) {
+    return switch (commandInt) {
+      case 1 -> Command.VOCABULARY;
+      case 2 -> Command.TRAINING;
+      case 3 -> Command.REPORT;
+      case 4 -> Command.EXIT;
+      default -> throw new NumberFormatException();
+    };
+  }
+
 
   private static List<Word> readFile() throws IOException {
     //todo try-catch
