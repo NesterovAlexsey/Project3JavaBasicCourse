@@ -59,29 +59,24 @@ public class Runner {
     return result;
   }
 
-  private static List<Word> readFile() throws IOException{
+  private static List<Word> readFile() throws IOException {
     //todo try-catch
     BufferedReader read = new BufferedReader(new FileReader("res/Dictionary"));
     List<Word> result = new ArrayList<>();
-    String first = "";
-    String second = "";
-    Word temporary = new Word(first, second);
-
 
     String line;
     while ((line = read.readLine()) != null) {
-      //first =
-      temporary = new Word(first, second);
-      String[] dataArray = line.split(";");
-      for (String data : dataArray) {
-        result.add(temporary);
-      }
+      int step = line.lastIndexOf(";");
+      String first = line.substring(0, step);
+      String second = line.substring(step + 1);
+      Word temporary = new Word(first, second);
+      result.add(temporary);
     }
 
     return result;
   }
 
-  private static void writeToFile(MyDictionary temporary){
+  private static void writeToFile(MyDictionary temporary) {
     //todo запись в файл сделать
   }
 }
