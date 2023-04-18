@@ -1,13 +1,14 @@
 public class Word {
 
-  private String englishWord;
   private String deutschWord;
+  //todo добавить артикель
+  private String englishWord;
 
   private int numberOfMentions = 0;
 
-  public Word(String englishWord, String deutschWord) {
-    this.englishWord = englishWord;
+  public Word(String deutschWord, String englishWord) {
     this.deutschWord = deutschWord;
+    this.englishWord = englishWord;
   }
 
   public String getDeutschWord() {

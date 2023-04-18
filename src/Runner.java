@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class Runner {
   }
 
   public static Command readCommand() throws IOException {
+    //Todo обновить, чтобы работал по нажатию на цифру также
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     System.out.println();
@@ -56,11 +59,29 @@ public class Runner {
     return result;
   }
 
-  private static List<Word> readFile(){
-    List<Word> temporary = new ArrayList<>();
-    return temporary;
+  private static List<Word> readFile() throws IOException{
+    //todo try-catch
+    BufferedReader read = new BufferedReader(new FileReader("res/Dictionary"));
+    List<Word> result = new ArrayList<>();
+    String first = "";
+    String second = "";
+    Word temporary = new Word(first, second);
+
+
+    String line;
+    while ((line = read.readLine()) != null) {
+      //first =
+      temporary = new Word(first, second);
+      String[] dataArray = line.split(";");
+      for (String data : dataArray) {
+        result.add(temporary);
+      }
+    }
+
+    return result;
   }
 
   private static void writeToFile(MyDictionary temporary){
+    //todo запись в файл сделать
   }
 }
