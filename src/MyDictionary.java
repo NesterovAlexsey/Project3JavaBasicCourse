@@ -16,4 +16,11 @@ public class MyDictionary {
   public static void setWordList(List<Word> wordList) {
     MyDictionary.wordList = wordList;
   }
+
+  public static void printList(){
+    List<Word> printing = MyDictionary.getWordList();
+    for(Word x: printing){
+      System.out.println(x);
+    }
+  }
 }
