@@ -16,7 +16,7 @@ public class Runner {
   }
 
   public static void main(String[] args) throws IOException {
-    //ToDO обновить вывод и поиск по ключу, теория по енам
+
     Controller worker = new Controller();
     Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));
 
@@ -70,7 +70,6 @@ public class Runner {
       default -> throw new NumberFormatException();
     };
   }
-
 
   private static List<Word> readFile() throws IOException {
     //todo try-catch
