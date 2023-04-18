@@ -7,6 +7,7 @@ public class MyDictionary {
   private static List<Word> wordList;
 
   public MyDictionary(List<Word> wordList) {
+    wordList.sort(Comparator.comparing(Word::getEnglishWord));
     this.wordList = wordList;
   }
 
@@ -18,9 +19,8 @@ public class MyDictionary {
     MyDictionary.wordList = wordList;
   }
 
-  public static void printSortEnglishList() {
+  public static void printList() {
     List<Word> printing = getWordList();
-    printing.sort(Comparator.comparing(Word::getEnglishWord));
     for (Word x : printing) {
       System.out.println(x);
     }

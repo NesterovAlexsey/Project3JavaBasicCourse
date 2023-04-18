@@ -20,7 +20,8 @@ public class Vocabulary {
     int command = readVocabularyCommand(currentDictionary);
     while (command != MENU) {
       switch (command) {
-        case VIEW -> MyDictionary.printSortEnglishList();
+        case VIEW -> MyDictionary.printList();
+
       }
       command = readVocabularyCommand(currentDictionary);
     }
