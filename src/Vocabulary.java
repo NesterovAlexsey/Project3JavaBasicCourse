@@ -15,15 +15,19 @@ public class Vocabulary {
   final static int MENU = 6;
 
   public static void runnerVocabulary(MyDictionary currentDictionary) throws IOException {
+    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
+//todo избавиться от передачи словаря
     printVocabularyMenu();
-    int command = readVocabularyCommand(currentDictionary);
+    int command = readVocabularyCommand(currentDictionary, read);
     while (command != MENU) {
       switch (command) {
         case VIEW -> MyDictionary.printList();
+        case ADD -> addWord(read);
 
       }
-      command = readVocabularyCommand(currentDictionary);
+      printVocabularyMenu();
+      command = readVocabularyCommand(currentDictionary, read);
     }
   }
 
@@ -38,8 +42,9 @@ public class Vocabulary {
     System.out.println("_______________________________________");
   }
 
-  private static int readVocabularyCommand(MyDictionary currentDictionary) throws IOException {
-    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+  private static int readVocabularyCommand(MyDictionary currentDictionary, BufferedReader read)
+      throws IOException {
+
     int command = -1;
 
     try {
@@ -50,5 +55,23 @@ public class Vocabulary {
     }
 
     return command;
+  }
+
+  private static void addWord(BufferedReader read) throws IOException {
+    System.out.print("Please, enter English word: ");
+    String englishWord = read.readLine();
+    System.out.print("Please, enter Deutsch word: ");
+    String deutschWord = read.readLine();
+    Word userWord = new Word(deutschWord, englishWord);
+    List<Word> checkList = MyDictionary.getWordList();
+
+    int position = Collections.binarySearch(checkList, userWord, Word::compareTo);
+    if (position < 0) {
+      checkList.add((- position - 1), userWord);
+      MyDictionary.setWordList(checkList);
+      System.out.println("Word '" + userWord + "' have been successfully added");
+    } else {
+      System.out.println("Word '" + checkList.get(position) + "' have been already in the list");
+    }
   }
 }

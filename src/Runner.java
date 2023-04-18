@@ -29,6 +29,7 @@ public class Runner {
         case TRAINING -> worker.openTrain(currentWordList);
         case REPORT -> worker.getResult(currentWordList);
       }
+      Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));
       command = readCommand();
     }
     writeToFile(currentWordList);
