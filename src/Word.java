@@ -34,4 +34,9 @@ public class Word {
   public void setNumberOfMentions(int numberOfMentions) {
     this.numberOfMentions = numberOfMentions;
   }
+
+  @Override
+  public String toString(){
+    return getDeutschWord() + " : " + getEnglishWord();
+  }
 }
