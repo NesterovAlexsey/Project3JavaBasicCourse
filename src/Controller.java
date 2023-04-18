@@ -1,6 +1,8 @@
+import java.io.IOException;
+
 public class Controller {
 
-  public void openVocabulary(MyDictionary currentDictionary) {
+  public void openVocabulary(MyDictionary currentDictionary) throws IOException {
     Vocabulary.runnerVocabulary(currentDictionary);
   }
 
