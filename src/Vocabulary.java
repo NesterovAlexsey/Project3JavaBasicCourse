@@ -23,6 +23,7 @@ public class Vocabulary {
       switch (command) {
         case VIEW -> MyDictionary.printList();
         case ADD -> addWord(read);
+        case DELETE -> deleteWord(read);
 
       }
       printVocabularyMenu();
@@ -57,6 +58,7 @@ public class Vocabulary {
   }
 
   private static void addWord(BufferedReader read) throws IOException {
+    //todo код рефактор
     System.out.print("Please, enter English word: ");
     String englishWord = read.readLine();
     System.out.print("Please, enter Deutsch word: ");
@@ -71,6 +73,22 @@ public class Vocabulary {
       System.out.println("Word '" + userWord + "' have been successfully added");
     } else {
       System.out.println("Word '" + checkList.get(position) + "' have been already in the list");
+    }
+  }
+
+  private static void deleteWord(BufferedReader read) throws IOException{
+    System.out.print("Please, enter word for delete: ");
+    String targetWord = read.readLine();
+    Word userWord = new Word(targetWord, targetWord);
+    List<Word> checkList = MyDictionary.getWordList();
+
+    int position = Collections.binarySearch(checkList, userWord, Word::compareTo);
+    if (position < 0) {
+      //todo добавить второй компоратор для немецких слов
+      System.out.println("Word '" + targetWord + "' do not exist in the list");
+    } else {
+      checkList.remove(position);
+      MyDictionary.setWordList(checkList);
     }
   }
 }
