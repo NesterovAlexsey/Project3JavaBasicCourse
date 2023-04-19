@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Vocabulary {
@@ -24,7 +26,8 @@ public class Vocabulary {
         case VIEW -> MyDictionary.printList();
         case ADD -> addWord(read);
         case DELETE -> deleteWord(read);
-
+        case TRANSLATE1 -> translateEGWord(read);
+        default -> System.out.println("Incorrect input data");
       }
       printVocabularyMenu();
       command = readVocabularyCommand(currentDictionary, read);
@@ -68,7 +71,7 @@ public class Vocabulary {
 
     int position = Collections.binarySearch(checkList, userWord, Word::compareTo);
     if (position < 0) {
-      checkList.add((- position - 1), userWord);
+      checkList.add((-position - 1), userWord);
       MyDictionary.setWordList(checkList);
       System.out.println("Word '" + userWord + "' have been successfully added");
     } else {
@@ -76,19 +79,35 @@ public class Vocabulary {
     }
   }
 
-  private static void deleteWord(BufferedReader read) throws IOException{
+  private static void deleteWord(BufferedReader read) throws IOException {
     System.out.print("Please, enter word for delete: ");
     String targetWord = read.readLine();
     Word userWord = new Word(targetWord, targetWord);
     List<Word> checkList = MyDictionary.getWordList();
+//    ComparatorDeutschWord comparatorDeutschWord = new ComparatorDeutschWord();
 
     int position = Collections.binarySearch(checkList, userWord, Word::compareTo);
     if (position < 0) {
       //todo добавить второй компоратор для немецких слов
+//      position = Collections.binarySearch(checkList, userWord, comparatorDeutschWord);
+
       System.out.println("Word '" + targetWord + "' do not exist in the list");
     } else {
       checkList.remove(position);
       MyDictionary.setWordList(checkList);
+    }
+  }
+
+  private static void translateEGWord(BufferedReader read) throws IOException{
+    System.out.print("Enter word for translation: ");
+    String targetW = read.readLine();
+    Word target = new Word(targetW, targetW);
+    int position = Collections.binarySearch(MyDictionary.getWordList(), target, Word::compareTo);
+    if (position < 0) {
+      System.out.println("There is NO word " + targetW + "in dictionary");
+    } else {
+      String result = MyDictionary.getWordList().get(position).getDeutschWord();
+      System.out.println("Translation " + targetW + " : " + result);
     }
   }
 }
