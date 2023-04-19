@@ -6,8 +6,8 @@ public class Controller {
     Vocabulary.runnerVocabulary(currentDictionary);
   }
 
-  public void openTrain() {
-    System.out.println("Here will be Train");
+  public void openTrain() throws IOException {
+    TrainWordTranslate.runnerTranslate();
   }
 
   public void getResult(MyDictionary currentDictionary) {

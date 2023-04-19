@@ -1,5 +1,5 @@
 public class Word implements Comparable<Word> {
-
+  //todo обновить Word, чтобы сохранять количество упоминаний
   private String deutschWord;
 
   private String englishWord;
