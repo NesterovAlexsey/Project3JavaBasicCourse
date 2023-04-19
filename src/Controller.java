@@ -10,7 +10,7 @@ public class Controller {
     TrainWordTranslate.runnerTranslate();
   }
 
-  public void getResult(MyDictionary currentDictionary) {
-    System.out.println("Here will be Report");
+  public void getResult() {
+    Report.runReport();
   }
 }
