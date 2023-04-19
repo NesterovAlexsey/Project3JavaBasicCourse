@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Runner {
       Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));
       command = readCommand();
     }
-    writeToFile(currentWordList);
+    writeToFile();
     System.out.println("Tschüss!");
   }
 
@@ -82,15 +83,25 @@ public class Runner {
     while ((line = read.readLine()) != null) {
       int step = line.lastIndexOf(";");
       String first = line.substring(0, step);
-      String second = line.substring(step + 1);
-      Word temporary = new Word(first, second);
-      result.add(temporary);
+//todo переписать
+      if (line.lastIndexOf(";", step + 1) == -1) {
+        int sep = line.lastIndexOf(";", step + 1);
+        String second = line.substring(step + 1, sep);
+        int num = Integer.parseInt(line.substring(sep + 1));
+        Word temporary = new Word(first, second, num);
+        result.add(temporary);
+      } else {
+        String second = line.substring(step + 1);
+        Word temporary = new Word(first, second);
+        result.add(temporary);
+      }
     }
 
     return result;
   }
 
-  private static void writeToFile(MyDictionary temporary) {
-    //todo запись в файл сделать
+  private static void writeToFile() throws IOException {
+    //todo запись в файл сделать, try-catch, создать файл
+    FileWriter outputDictionary = new FileWriter("res/Dictionary", true);
   }
 }
