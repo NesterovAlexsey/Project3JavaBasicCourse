@@ -1,12 +1,15 @@
 import java.util.List;
 
 public class Report {
+
   final static int LEARNED = 2;
   final static int FRAME = 20;
-  static final String ANSI_RESET = "\u001B[0m";
-  static final String ANSI_GREEN = "\u001B[32m";
-  static final String ANSI_YELLOW = "\u001B[33m";
-  public static void runReport(){
+  static final String RESET = "\u001B[0m";
+  static final String GREEN = "\u001B[32m";
+  static final String YELLOW = "\u001B[33m";
+  static final String GREY = "\u001B[37m";
+
+  public static void runReport() {
     List<Word> report = MyDictionary.getWordList();
     int doneWord = (int) report.stream()
         .filter(Word -> Word.getNumberOfMentions() > LEARNED)
@@ -18,30 +21,25 @@ public class Report {
 
     System.out.printf("Number of learned word: %d / %d%n", doneWord, report.size());
     System.out.printf("Number of word in progress: %d / %d%n", processWord, report.size());
-    System.out.printf("TOTAL LEARNED: %d%n", doneWord/ report.size() * 100);
+    System.out.printf("TOTAL LEARNED: %d%n", doneWord / report.size() * 100);
 
     printBeauty(doneWord, processWord, report.size());
 
   }
 
-  private static void printBeauty(Integer doneWord, Integer processWord, Integer total){
-    for (int i = 0; i < FRAME-1; i++){
-      System.out.print("-");
-    }
-    System.out.println();
-    System.out.print("|");
-    int done = doneWord / total * FRAME;
-    for (int i = 0; i < done; i++){
-      System.out.print(ANSI_GREEN + "0" + ANSI_RESET);
-    }
-    int progress = processWord / total * FRAME;
-    for (int i = 0; i < progress; i++){
-      System.out.print(ANSI_YELLOW + "0" + ANSI_RESET);
-    }
-    System.out.print("|");
-    System.out.println();
-    for (int i = 0; i < FRAME-1; i++){
-      System.out.print("-");
+  private static void printBeauty(Integer doneWord, Integer processWord, Integer total) {
+
+    int done = ((doneWord * 100) / total * FRAME) / 100;
+    int progress = ((processWord * 100) / total * FRAME) / 100;
+
+    for (int i = 1; i <= FRAME; i++) {
+      if (i <= done) {
+        System.out.print(GREEN + "\u25AE" + RESET);
+      } else if (i <= done + progress) {
+        System.out.print(YELLOW + "\u25AE" + RESET);
+      } else {
+        System.out.print(GREY + "\u25AE" + RESET);
+      }
     }
     System.out.println();
   }
