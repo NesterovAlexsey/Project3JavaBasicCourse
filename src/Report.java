@@ -21,7 +21,6 @@ public class Report {
 
     System.out.printf("Number of learned word: %d / %d%n", doneWord, report.size());
     System.out.printf("Number of word in progress: %d / %d%n", processWord, report.size());
-    System.out.printf("TOTAL LEARNED: %d%n", doneWord / report.size() * 100);
 
     printBeauty(doneWord, processWord, report.size());
 
