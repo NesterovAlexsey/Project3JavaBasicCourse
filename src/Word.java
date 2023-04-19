@@ -1,5 +1,4 @@
 public class Word implements Comparable<Word> {
-  //todo обновить Word, чтобы сохранять количество упоминаний
   private String deutschWord;
 
   private String englishWord;
@@ -9,6 +8,12 @@ public class Word implements Comparable<Word> {
   public Word(String deutschWord, String englishWord) {
     this.deutschWord = deutschWord;
     this.englishWord = englishWord;
+  }
+
+  public Word(String deutschWord, String englishWord, int numberOfMentions){
+    this.deutschWord = deutschWord;
+    this.englishWord = englishWord;
+    this.numberOfMentions = numberOfMentions;
   }
 
   public String getDeutschWord() {
