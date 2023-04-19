@@ -6,7 +6,7 @@ public class Controller {
     Vocabulary.runnerVocabulary(currentDictionary);
   }
 
-  public void openTrain(MyDictionary currentDictionary) {
+  public void openTrain() {
     System.out.println("Here will be Train");
   }
 

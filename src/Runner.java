@@ -26,7 +26,7 @@ public class Runner {
     while (command != Command.EXIT) {
       switch (command) {
         case VOCABULARY -> worker.openVocabulary(currentWordList);
-        case TRAINING -> worker.openTrain(currentWordList);
+        case TRAINING -> worker.openTrain();
         case REPORT -> worker.getResult(currentWordList);
       }
       Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));

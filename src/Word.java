@@ -31,12 +31,12 @@ public class Word implements Comparable<Word> {
     this.englishWord = englishWord;
   }
 
-  public void setNumberOfMentions(int numberOfMentions) {
-    this.numberOfMentions = numberOfMentions;
+  public void setNumberOfMentions() {
+    numberOfMentions++;
   }
 
   @Override
-  public String toString(){
+  public String toString() {
     return getEnglishWord() + " : " + getDeutschWord();
   }
 
