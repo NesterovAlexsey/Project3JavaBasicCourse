@@ -83,7 +83,7 @@ public class Runner {
     while ((line = read.readLine()) != null) {
       int step = line.lastIndexOf(";");
       String first = line.substring(0, step);
-//todo переписать
+//todo переписать, работает не корректно!
       if (line.lastIndexOf(";", step + 1) == -1) {
         int sep = line.lastIndexOf(";", step + 1);
         String second = line.substring(step + 1, sep);
@@ -101,7 +101,14 @@ public class Runner {
   }
 
   private static void writeToFile() throws IOException {
-    //todo запись в файл сделать, try-catch, создать файл
-    FileWriter outputDictionary = new FileWriter("res/Dictionary", true);
+    //todo try-catch
+    List<Word> results = MyDictionary.getWordList();
+
+    FileWriter output = new FileWriter("res/Dictionary");
+    for (Word word : results) {
+      output.write(
+          word.getDeutschWord() + ";" + word.getEnglishWord() + "\n");
+    }
+    output.close();
   }
 }
