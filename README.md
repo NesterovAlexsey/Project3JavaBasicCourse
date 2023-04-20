@@ -23,3 +23,25 @@ process (1 or 2 correct answers), as well as visually display the percentage of 
 progress/yet to be learned words.
 
 And, of course, your results will not disappear after closing the program, everything is saved.
+
+### ***1.2 Program Interface***
+
+1:VOCABULARY
+* View the English-German dictionary;
+* Add new word to Dictionary
+* Delete word from Dictionary
+* Translation of an English-German word
+* Back to Menu
+
+2:TRAINING
+* Word: Super
+* Enter your translation:
+
+3:REPORT
+
+Number of learned word: 1 / 7 | 
+Number of word in progress: 3 / 7
+
+🟩🟩🟩🟩🟨🟨🟨⬛⬛⬛⬛⬛⬛⬛⬛
+
+4:EXIT
