@@ -16,7 +16,7 @@ public class Report {
         .count();
 
     int processWord = (int) report.stream()
-        .filter(Word -> (Word.getNumberOfMentions() < LEARNED) && Word.getNumberOfMentions() > 0)
+        .filter(Word -> (Word.getNumberOfMentions() <= LEARNED) && Word.getNumberOfMentions() > 0)
         .count();
 
     System.out.printf("Number of learned word: %d / %d%n", doneWord, report.size());

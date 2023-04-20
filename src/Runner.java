@@ -89,7 +89,6 @@ public class Runner {
       int third = Integer.parseInt(line.substring(step2 + 1));
 
       Word temporary = new Word(first, second, third);
-      System.out.println(temporary + " " + temporary.getNumberOfMentions());
       result.add(temporary);
 
     }
