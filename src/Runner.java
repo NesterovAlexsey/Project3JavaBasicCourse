@@ -35,9 +35,15 @@ public class Runner {
       command = readCommand();
     }
     writeToFile();
-    System.out.println("Tschüss!");
+    System.out.println("Tschüssi!");
   }
 
+  /**
+   * the method reads the user's command entered both as a digit from the keyboard and as a word.
+   *
+   * @return Command
+   * @throws IOException
+   */
   public static Command readCommand() throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -53,11 +59,12 @@ public class Runner {
         try {
           result = Command.valueOf(command);
         } catch (IllegalArgumentException c) {
-
           System.out.println("Incorrect: " + command);
-          System.out.print("Please, enter correct command: ");
-          command = br.readLine().toUpperCase();
         }
+      }
+      if (result == null) {
+        System.out.print("Please, enter correct command: ");
+        command = br.readLine().toUpperCase();
       }
     }
     System.out.println();
