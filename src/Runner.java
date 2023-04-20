@@ -102,7 +102,9 @@ public class Runner {
     FileWriter output = new FileWriter("res/Dictionary");
     for (Word word : results) {
       output.write(
-          word.getDeutschWord() + ";" + word.getEnglishWord() + "\n");
+          word.getDeutschWord() + ";"
+              + word.getEnglishWord() + ";"
+              + word.getNumberOfMentions() + "\n");
     }
     output.close();
   }

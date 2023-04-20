@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Vocabulary {
@@ -11,9 +9,8 @@ public class Vocabulary {
   final static int VIEW = 1;
   final static int ADD = 2;
   final static int DELETE = 3;
-  final static int TRANSLATE1 = 4;
-  final static int TRANSLATE2 = 5;
-  final static int MENU = 6;
+  final static int TRANSLATE = 4;
+  final static int MENU = 5;
 
   public static void runnerVocabulary(MyDictionary currentDictionary) throws IOException {
     BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +23,7 @@ public class Vocabulary {
         case VIEW -> MyDictionary.printList();
         case ADD -> addWord(read);
         case DELETE -> deleteWord(read);
-        case TRANSLATE1 -> translateEGWord(read);
+        case TRANSLATE -> translateEGWord(read);
         default -> System.out.println("Incorrect input data");
       }
       printVocabularyMenu();
@@ -39,8 +36,7 @@ public class Vocabulary {
     System.out.println(VIEW + ". View the English-German dictionary;");
     System.out.println(ADD + ". Add new word to Dictionary");
     System.out.println(DELETE + ". Delete word from Dictionary");
-    System.out.println(TRANSLATE1 + ". Translation of an English-German word");
-    System.out.println(TRANSLATE2 + ". Translation of an German-English word");
+    System.out.println(TRANSLATE + ". Translation of an English-German word");
     System.out.println(MENU + ". Back to Menu");
     System.out.println("_______________________________________");
   }
