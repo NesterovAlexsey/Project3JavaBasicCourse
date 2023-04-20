@@ -18,7 +18,6 @@ public class TrainWordTranslate {
     printTopMenu();
 
     String exit = Stream.empty().toString();
-
     while (!exit.equals(EXIT)) {
 
       List<Word> train = MyDictionary.getWordList()
@@ -26,8 +25,13 @@ public class TrainWordTranslate {
           .filter(Word -> Word.getNumberOfMentions() < LEARNED)
           .toList();
 
-      int randomWord = (int) Math.floor(Math.random() * train.size());
+      if (train.isEmpty()) {
+        System.out.println("GREAT! all Vocabulary have been learned! GOOD JOB!");
+        exit = EXIT;
+        continue;
+      }
 
+      int randomWord = (int) Math.floor(Math.random() * train.size());
       printQuestion(randomWord, train);
       exit = read.readLine();
 
