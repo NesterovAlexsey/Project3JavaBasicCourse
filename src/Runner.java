@@ -81,22 +81,18 @@ public class Runner {
 
     String line;
     while ((line = read.readLine()) != null) {
-      int step = line.lastIndexOf(";");
+      int step = line.indexOf(";");
       String first = line.substring(0, step);
-//todo переписать, работает не корректно!
-      if (line.lastIndexOf(";", step + 1) == -1) {
-        int sep = line.lastIndexOf(";", step + 1);
-        String second = line.substring(step + 1, sep);
-        int num = Integer.parseInt(line.substring(sep + 1));
-        Word temporary = new Word(first, second, num);
-        result.add(temporary);
-      } else {
-        String second = line.substring(step + 1);
-        Word temporary = new Word(first, second);
-        result.add(temporary);
-      }
-    }
 
+      int step2 = line.indexOf(";", step + 1);
+      String second = line.substring(step + 1, step2);
+      int third = Integer.parseInt(line.substring(step2 + 1));
+
+      Word temporary = new Word(first, second, third);
+      System.out.println(temporary + " " + temporary.getNumberOfMentions());
+      result.add(temporary);
+
+    }
     return result;
   }
 
