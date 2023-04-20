@@ -1,15 +1,13 @@
 import java.util.List;
 
 public class Report {
-
-  final static int LEARNED = 2;
   final static int FRAME = 20;
   static final String RESET = "\u001B[0m";
   static final String GREEN = "\u001B[32m";
   static final String YELLOW = "\u001B[33m";
   static final String GREY = "\u001B[37m";
 
-  public static void runReport() {
+  public static void runReport(Integer LEARNED) {
     List<Word> report = MyDictionary.getWordList();
     int doneWord = (int) report.stream()
         .filter(Word -> Word.getNumberOfMentions() > LEARNED)

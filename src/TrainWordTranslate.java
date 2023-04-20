@@ -13,7 +13,7 @@ public class TrainWordTranslate {
   static final String ANSI_GREEN = "\u001B[32m";
   final static String EXIT = "0";
 
-  public static void runnerTranslate() throws IOException {
+  public static void runnerTranslate(Integer LEARNED) throws IOException {
     BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
     printTopMenu();
 
@@ -21,13 +21,19 @@ public class TrainWordTranslate {
 
     while (!exit.equals(EXIT)) {
 
-      int randomWord = (int) Math.floor(Math.random() * MyDictionary.getWordList().size());
-      printQuestion(randomWord);
+      List<Word> train = MyDictionary.getWordList()
+          .stream()
+          .filter(Word -> Word.getNumberOfMentions() < LEARNED)
+          .toList();
+
+      int randomWord = (int) Math.floor(Math.random() * train.size());
+
+      printQuestion(randomWord, train);
       exit = read.readLine();
 
-      if (exit.equals(MyDictionary.getWordList().get(randomWord).getDeutschWord())) {
+      if (exit.equals(train.get(randomWord).getDeutschWord())) {
         printPositiveFeedback();
-        MyDictionary.getWordList().get(randomWord).setNumberOfMentions();
+        changeNumberOfMention(train, randomWord);
       } else if (!exit.equals(EXIT)) {
         printNegativeFeedback(randomWord);
       }
@@ -40,9 +46,9 @@ public class TrainWordTranslate {
     System.out.println("=================================================================");
   }
 
-  private static void printQuestion(Integer randomWord) {
+  private static void printQuestion(Integer randomWord, List<Word> train) {
     System.out.print("WORD: ");
-    System.out.println(MyDictionary.getWordList().get(randomWord).getEnglishWord());
+    System.out.println(train.get(randomWord).getEnglishWord());
     System.out.print("Enter your translation: ");
   }
 
@@ -56,5 +62,11 @@ public class TrainWordTranslate {
   private static void printNegativeFeedback(Integer randomWord) {
     System.out.print(ANSI_RED + "Incorrect" + ANSI_RESET);
     System.out.println(", right: " + MyDictionary.getWordList().get(randomWord).getDeutschWord());
+  }
+
+  private static void changeNumberOfMention(List<Word> train, Integer randomWord){
+    int position = Collections.binarySearch(MyDictionary.getWordList(), train.get(randomWord),
+        Word::compareTo);
+    MyDictionary.getWordList().get(position).setNumberOfMentions();
   }
 }
