@@ -1,7 +1,7 @@
 public class Word implements Comparable<Word> {
-  private String deutschWord;
+  private final String deutschWord;
 
-  private String englishWord;
+  private final String englishWord;
 
   private int numberOfMentions = 0;
 
@@ -26,14 +26,6 @@ public class Word implements Comparable<Word> {
 
   public int getNumberOfMentions() {
     return numberOfMentions;
-  }
-
-  public void setDeutschWord(String deutschWord) {
-    this.deutschWord = deutschWord;
-  }
-
-  public void setEnglishWord(String englishWord) {
-    this.englishWord = englishWord;
   }
 
   public void setNumberOfMentions() {

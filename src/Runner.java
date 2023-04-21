@@ -18,7 +18,7 @@ public class Runner {
 
   public static void main(String[] args) throws IOException {
 
-    Controller worker = new Controller();
+    Fasade worker = new Fasade();
     Arrays.stream(Command.values()).forEach(x -> System.out.println(x.ordinal() + 1 + ":" + x));
 
     MyDictionary currentWordList = new MyDictionary(readFile());
@@ -44,7 +44,7 @@ public class Runner {
    * @return Command
    * @throws IOException
    */
-  public static Command readCommand() throws IOException {
+  private static Command readCommand() throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     System.out.print("\nEnter the command: ");

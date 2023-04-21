@@ -1,6 +1,6 @@
-#  Vocabulary training program
+# Vocabulary training program
 
-##  1. User view
+## 1. User view
 
 ### ***1.1 Description***
 
@@ -27,6 +27,7 @@ And, of course, your results will not disappear after closing the program, every
 ### ***1.2 Program Interface***
 
 1:VOCABULARY
+
 * View the English-German dictionary;
 * Add new word to Dictionary
 * Delete word from Dictionary
@@ -34,14 +35,21 @@ And, of course, your results will not disappear after closing the program, every
 * Back to Menu
 
 2:TRAINING
+
 * Word: Super
 * Enter your translation:
 
 3:REPORT
 
-Number of learned word: 1 / 7 | 
+Number of learned word: 1 / 7 |
 Number of word in progress: 3 / 7
 
 🟩🟩🟩🟩🟨🟨🟨⬛⬛⬛⬛⬛⬛⬛⬛
 
 4:EXIT
+
+## 2. User view
+
+### ***2.1 Program architecture***
+
+![program architecture, interaction between classes](https://drive.google.com/file/d/1HEtWP9FvZJ4ucRFiVSKgHiORMqYZetD5/view?usp=share_link)

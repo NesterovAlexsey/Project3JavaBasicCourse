@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Controller {
+public class Fasade {
   final static int LEARNED = 2;
 
   public void openVocabulary(MyDictionary currentDictionary) throws IOException {
