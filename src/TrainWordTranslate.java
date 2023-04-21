@@ -39,7 +39,7 @@ public class TrainWordTranslate {
         printPositiveFeedback();
         changeNumberOfMention(train, randomWord);
       } else if (!exit.equals(EXIT)) {
-        printNegativeFeedback(randomWord);
+        printNegativeFeedback(randomWord, train);
       }
     }
   }
@@ -63,9 +63,9 @@ public class TrainWordTranslate {
     System.out.println(ANSI_GREEN + feedback.get(0) + ANSI_RESET);
   }
 
-  private static void printNegativeFeedback(Integer randomWord) {
+  private static void printNegativeFeedback(Integer randomWord, List<Word> train) {
     System.out.print(ANSI_RED + "Incorrect" + ANSI_RESET);
-    System.out.println(", right: " + MyDictionary.getWordList().get(randomWord).getDeutschWord());
+    System.out.println(", right: " + train.get(randomWord).getDeutschWord());
   }
 
   private static void changeNumberOfMention(List<Word> train, Integer randomWord){
