@@ -16,6 +16,11 @@ public class Runner {
     EXIT,
   }
 
+  /**
+   * Main method, start project
+   * @param args
+   * @throws IOException
+   */
   public static void main(String[] args) throws IOException {
 
     Fasade worker = new Fasade();
@@ -40,7 +45,6 @@ public class Runner {
 
   /**
    * the method reads the user's command entered both as a digit from the keyboard and as a word.
-   *
    * @return Command
    * @throws IOException
    */
@@ -71,6 +75,11 @@ public class Runner {
     return result;
   }
 
+  /**
+   * Method return Command, if user print number in menu
+   * @param commandInt
+   * @return Command
+   */
   private static Command readIntNumber(Integer commandInt) {
     return switch (commandInt) {
       case 1 -> Command.VOCABULARY;
@@ -81,6 +90,11 @@ public class Runner {
     };
   }
 
+  /**
+   * Read file
+   * @return List<Word>
+   * @throws IOException
+   */
   private static List<Word> readFile() throws IOException {
     //todo try-catch
     BufferedReader read = new BufferedReader(new FileReader("res/Dictionary"));
@@ -102,6 +116,10 @@ public class Runner {
     return result;
   }
 
+  /**
+   * add List in File
+   * @throws IOException
+   */
   private static void writeToFile() throws IOException {
     //todo try-catch
     List<Word> results = MyDictionary.getWordList();

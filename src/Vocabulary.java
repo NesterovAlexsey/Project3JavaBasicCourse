@@ -76,21 +76,18 @@ public class Vocabulary {
   }
 
   private static void deleteWord(BufferedReader read) throws IOException {
-    System.out.print("Please, enter word for delete: ");
+    System.out.print("Please, enter English word for delete: ");
     String targetWord = read.readLine();
     Word userWord = new Word(targetWord, targetWord);
     List<Word> checkList = MyDictionary.getWordList();
-//    ComparatorDeutschWord comparatorDeutschWord = new ComparatorDeutschWord();
 
     int position = Collections.binarySearch(checkList, userWord, Word::compareTo);
     if (position < 0) {
-      //todo добавить второй компоратор для немецких слов
-//      position = Collections.binarySearch(checkList, userWord, comparatorDeutschWord);
-
       System.out.println("Word '" + targetWord + "' do not exist in the list");
     } else {
       checkList.remove(position);
       MyDictionary.setWordList(checkList);
+      System.out.println("Word '" + userWord.getEnglishWord() + "' have been successfully delete");
     }
   }
 
