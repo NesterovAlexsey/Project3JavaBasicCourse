@@ -76,3 +76,7 @@ counts mentions of words and limits the output of words that are considered "lea
 the number of correct repetitions;
 * __Report__ - counts the number of learned words or words in the learning process, relative to 
 the total volume of the dictionary. Displays data on the screen;
+
+## 4. Tests
+the program has one test in ReportTest class, that checks the correctness of counting the number 
+of learned words
