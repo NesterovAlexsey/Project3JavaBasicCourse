@@ -52,4 +52,4 @@ Number of word in progress: 3 / 7
 
 ### ***2.1 Program architecture***
 
-![program architecture, interaction between classes](https://drive.google.com/file/d/1HEtWP9FvZJ4ucRFiVSKgHiORMqYZetD5/view?usp=share_link)
+![program architecture, interaction between classes]([https://github.com/NesterovAlexsey/Project3JavaBasicCourse/blob/main/Project3Dictionary.drawio.png))
