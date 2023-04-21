@@ -9,19 +9,26 @@ public class Report {
 
   public static void runReport(Integer LEARNED) {
     List<Word> report = MyDictionary.getWordList();
-    int doneWord = (int) report.stream()
-        .filter(Word -> Word.getNumberOfMentions() > LEARNED)
-        .count();
 
-    int processWord = (int) report.stream()
-        .filter(Word -> (Word.getNumberOfMentions() <= LEARNED) && Word.getNumberOfMentions() > 0)
-        .count();
+    int doneWord = getDoneWord(LEARNED, report);
+    int processWord = getProgressWord(LEARNED, report);
 
     System.out.printf("Number of learned word: %d / %d%n", doneWord, report.size());
     System.out.printf("Number of word in progress: %d / %d%n", processWord, report.size());
 
     printBeauty(doneWord, processWord, report.size());
+  }
 
+  private static int getDoneWord(Integer LEARNED, List<Word> report){
+    return (int) report.stream()
+        .filter(Word -> Word.getNumberOfMentions() >= LEARNED)
+        .count();
+  }
+
+  private static int getProgressWord(Integer LEARNED, List<Word> report){
+    return (int) report.stream()
+        .filter(Word -> (Word.getNumberOfMentions() < LEARNED) && (Word.getNumberOfMentions() > 0))
+        .count();
   }
 
   private static void printBeauty(Integer doneWord, Integer processWord, Integer total) {
