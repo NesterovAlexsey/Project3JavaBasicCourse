@@ -47,11 +47,13 @@ Number of word in progress: 3 / 7
 🟩🟩🟩🟩🟨🟨🟨⬛⬛⬛⬛⬛⬛⬛⬛
 
 4:EXIT
+## 2. Point of entry
+To start the program, after downloading the data from repository, run the file "src/Runner".
 
-## 2. Program architecture
+## 3. Program architecture
 
-### ***2.1 UML diagram***
+### ***3.1 UML diagram***
 
 ![program architecture, interaction between classes](https://github.com/NesterovAlexsey/Project3JavaBasicCourse/blob/main/ProjectStruction.png)
 
-### ***2.2 Shot class description***
+### ***3.2 Shot class description***
