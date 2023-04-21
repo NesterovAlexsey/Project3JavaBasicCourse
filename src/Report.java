@@ -19,7 +19,7 @@ public class Report {
     printBeauty(doneWord, processWord, report.size());
   }
 
-  private static int getDoneWord(Integer LEARNED, List<Word> report){
+  public static int getDoneWord(Integer LEARNED, List<Word> report){
     return (int) report.stream()
         .filter(Word -> Word.getNumberOfMentions() >= LEARNED)
         .count();
