@@ -57,3 +57,22 @@ To start the program, after downloading the data from repository, run the file "
 ![program architecture, interaction between classes](https://github.com/NesterovAlexsey/Project3JavaBasicCourse/blob/main/ProjectStruction.png)
 
 ### ***3.2 Shot class description***
+The program uses 7 classes, briefly described below. In total, the program has 37 methods. 
+The following technical solutions have been applied: working with files (upload-download), 
+Enam, compareTo, binary search, sorting, working with the Stream class, etc.
+* __Runner__ - launches the program, reads data from the file, 
+creates and fills an element of the Dictionary class with a list of elements of the Word class;
+* __MyDictionary__ - stores a list of words in the constructor, can overwrite it, 
+return it on request and print;
+* __Word__ - It has several types of constructors, 
+stores the word and its translation and the number of its mentions, can compare words, print, 
+return on request;
+* __Fasade__ - implements the facade structural pattern, the client is the Runner class;
+* __Vocabulary__ -the class launches a menu sub-item - a dictionary. It can read data from the user,
+find the right word on request, or find the right place to add a new word. deletes, 
+adds words to the dictionary and finds the translation of words;
+* __TrainWordTranslate__ - asked a word by a randomly selected number, analyzes the result, 
+counts mentions of words and limits the output of words that are considered "learned" by users by 
+the number of correct repetitions;
+* __Report__ - counts the number of learned words or words in the learning process, relative to 
+the total volume of the dictionary. Displays data on the screen;
