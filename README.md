@@ -48,8 +48,10 @@ Number of word in progress: 3 / 7
 
 4:EXIT
 
-## 2. User view
+## 2. Program architecture
 
-### ***2.1 Program architecture***
+### ***2.1 UML diagram***
 
 ![program architecture, interaction between classes](https://github.com/NesterovAlexsey/Project3JavaBasicCourse/blob/main/ProjectStruction.png)
+
+### ***2.2 Shot class description***
