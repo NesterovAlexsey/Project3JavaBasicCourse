@@ -1,4 +1,4 @@
-# Vocabulary training program
+# Vocabulary training program "Digga"
 
 ## 1. User view
 
